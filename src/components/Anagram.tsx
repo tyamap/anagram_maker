@@ -3,18 +3,22 @@ import kuromoji, { IpadicFeatures, Tokenizer } from "kuromoji";
 
 type AnagramProps = {
   word: string;
-  length: number;
+  number: number;
 };
-
+type kuromojiDict = {
+  [key: string]: kuromoji.IpadicFeatures
+}
 const Anagram: React.FC<AnagramProps> = (props) => {
-  const [dict, setDict] = useState<any>({});
+  const [dict, setDict] = useState<kuromojiDict>({});
 
   useEffect(() => {
+    console.log("作るよ");
     createDict().then(() => {
       setDict(anaDic);
+      console.log("作った");
       console.log(anaDic);
-    })
-  }, []);
+    });
+  }, [props]);
 
   const permutation = (
     post: any[],
@@ -35,8 +39,8 @@ const Anagram: React.FC<AnagramProps> = (props) => {
   };
 
   const array = props.word.split("");
-  const results = permutation(array, props.length);
-  const anaDic: any = {};
+  const results = permutation(array, array.length < props.number ? array.length :props.number);
+  const anaDic: kuromojiDict = {};
   const builder = kuromoji.builder({
     dicPath: "/dict",
   });
@@ -48,7 +52,7 @@ const Anagram: React.FC<AnagramProps> = (props) => {
 
   const searchDict = async (value: string) => {
     const res = (await tokenizer).tokenize(value).map((t) => t);
-    if (res.length === 1) {
+    if (res.length === 1 && res[0].word_type === "KNOWN") {
       anaDic[value] = res[0];
     }
   };
@@ -60,13 +64,34 @@ const Anagram: React.FC<AnagramProps> = (props) => {
   };
 
   return (
-    <ul>
-      {Object.keys(dict).map((key) => (
-        <li key={key}>
-          {`${key} | ${dict[key]}`}
-        </li>
-      ))}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>抽出結果</th>
+          <th>基本形</th>
+          <th>活用型</th>
+          <th>活用形</th>
+          <th>品詞</th>
+          <th>品詞細分類1</th>
+          <th>品詞細分類2</th>
+          <th>品詞細分類3</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(dict).map((key) => (
+          <tr key={key}>
+            <td className="result">{key}</td>
+            <td>{dict[key].basic_form}</td>
+            <td>{dict[key].conjugated_type}</td>
+            <td>{dict[key].conjugated_form}</td>
+            <td>{dict[key].pos}</td>
+            <td>{dict[key].pos_detail_1}</td>
+            <td>{dict[key].pos_detail_2}</td>
+            <td>{dict[key].pos_detail_3}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
