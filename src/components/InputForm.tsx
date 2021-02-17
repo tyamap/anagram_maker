@@ -19,7 +19,7 @@ const InputForm: React.FC<InputFormProps> = (props) => {
   };
   return (
     <>
-      <form action="#">
+      <div>
         <input type="text" value={input} onChange={handleInput} required style={{width: 250}} />
         <input
           type="number"
@@ -30,7 +30,7 @@ const InputForm: React.FC<InputFormProps> = (props) => {
           style={{ width: 30 }}
         />
         <input type="submit" onClick={submit} value="検索" />
-      </form>
+      </div>
     </>
   );
 };
