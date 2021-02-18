@@ -12,11 +12,8 @@ const Anagram: React.FC<AnagramProps> = (props) => {
   const [dict, setDict] = useState<kuromojiDict>({});
 
   useEffect(() => {
-    console.log("作るよ");
     createDict().then(() => {
       setDict(anaDic);
-      console.log("作った");
-      console.log(anaDic);
     });
   }, [props]);
 
