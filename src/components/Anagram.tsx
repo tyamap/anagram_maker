@@ -65,10 +65,10 @@ const Anagram: React.FC<AnagramProps> = (props) => {
       <thead>
         <tr>
           <th>抽出結果</th>
-          <th>基本形</th>
-          <th>活用型</th>
-          <th>活用形</th>
           <th>品詞</th>
+          <th>基本形</th>
+          <th>活用形</th>
+          <th>活用型</th>
           <th>品詞細分類1</th>
           <th>品詞細分類2</th>
           <th>品詞細分類3</th>
@@ -78,10 +78,10 @@ const Anagram: React.FC<AnagramProps> = (props) => {
         {Object.keys(dict).map((key) => (
           <tr key={key}>
             <td className="result">{key}</td>
-            <td>{dict[key].basic_form}</td>
-            <td>{dict[key].conjugated_type}</td>
-            <td>{dict[key].conjugated_form}</td>
             <td>{dict[key].pos}</td>
+            <td>{dict[key].basic_form}</td>
+            <td>{dict[key].conjugated_form}</td>
+            <td>{dict[key].conjugated_type}</td>
             <td>{dict[key].pos_detail_1}</td>
             <td>{dict[key].pos_detail_2}</td>
             <td>{dict[key].pos_detail_3}</td>
