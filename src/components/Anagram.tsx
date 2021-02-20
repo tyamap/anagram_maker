@@ -8,6 +8,7 @@ type AnagramProps = {
 type kuromojiDict = {
   [key: string]: kuromoji.IpadicFeatures
 }
+// TODO: サーバーサイドに移行
 const Anagram: React.FC<AnagramProps> = (props) => {
   const [dict, setDict] = useState<kuromojiDict>({});
 
