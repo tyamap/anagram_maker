@@ -1,65 +1,26 @@
-import React, { useEffect, useState } from "react";
-import kuromoji, { IpadicFeatures, Tokenizer } from "kuromoji";
+import React from "react";
+import useAxios from "axios-hooks";
+import KuromojiToken from "../entities/token";
 
 type AnagramProps = {
   word: string;
   number: number;
 };
-type kuromojiDict = {
-  [key: string]: kuromoji.IpadicFeatures
-}
-// TODO: サーバーサイドに移行
+
+const api = {
+  getWord: {
+    url: (w: string, mn: number) =>
+      `${process.env.REACT_APP_API_BASE}/word?w=${w}&mn=${mn}`,
+  },
+};
 const Anagram: React.FC<AnagramProps> = (props) => {
-  const [dict, setDict] = useState<kuromojiDict>({});
-
-  useEffect(() => {
-    createDict().then(() => {
-      setDict(anaDic);
-    });
-  }, [props]);
-
-  const permutation = (
-    post: any[],
-    n: number = post.length,
-    result: any[] = [],
-    pre: any[] = []
-  ) => {
-    if (n > 0) {
-      post.forEach((_, i) => {
-        const rest = [...post];
-        const elem: any[] = rest.splice(i, 1);
-        permutation(rest, n - 1, result, [...pre, ...elem]);
-      });
-    } else {
-      result.push(pre);
-    }
-    return result;
-  };
-
-  const array = props.word.split("");
-  const results = permutation(array, array.length < props.number ? array.length :props.number);
-  const anaDic: kuromojiDict = {};
-  const builder = kuromoji.builder({
-    dicPath: "/dict",
-  });
-  const tokenizer = new Promise<Tokenizer<IpadicFeatures>>((done) => {
-    builder.build((_err, tokenizer) => {
-      done(tokenizer);
-    });
+  const [{ data, loading, error }] = useAxios<KuromojiToken[]>({
+    url: api.getWord.url(props.word, props.number),
+    method: "GET",
   });
 
-  const searchDict = async (value: string) => {
-    const res = (await tokenizer).tokenize(value).map((t) => t);
-    if (res.length === 1 && res[0].word_type === "KNOWN") {
-      anaDic[value] = res[0];
-    }
-  };
-
-  const createDict = async () => {
-    for await (let r of results) {
-      await searchDict(r.join(""));
-    }
-  };
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error!</p>;
 
   return (
     <table>
@@ -76,16 +37,16 @@ const Anagram: React.FC<AnagramProps> = (props) => {
         </tr>
       </thead>
       <tbody>
-        {Object.keys(dict).map((key) => (
-          <tr key={key}>
-            <td className="result">{key}</td>
-            <td>{dict[key].pos}</td>
-            <td>{dict[key].basic_form}</td>
-            <td>{dict[key].conjugated_form}</td>
-            <td>{dict[key].conjugated_type}</td>
-            <td>{dict[key].pos_detail_1}</td>
-            <td>{dict[key].pos_detail_2}</td>
-            <td>{dict[key].pos_detail_3}</td>
+        {data?.map((d, i) => (
+          <tr key={i}>
+            <td className="result">{d.surface}</td>
+            <td>{d.partOfSpeechLevel1}</td>
+            <td>{d.baseForm}</td>
+            <td>{d.conjugationForm}</td>
+            <td>{d.conjugationType}</td>
+            <td>{d.partOfSpeechLevel2}</td>
+            <td>{d.partOfSpeechLevel3}</td>
+            <td>{d.partOfSpeechLevel4}</td>
           </tr>
         ))}
       </tbody>
