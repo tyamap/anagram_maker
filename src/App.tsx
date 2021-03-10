@@ -9,9 +9,6 @@ export type Query = {
 function App() {
   const [query, setQuery] = useState<Query>({word: "", number: 0})
 
-  useEffect(() => {
-    console.log(query.word);
-  }, [query])
   return (
     <div className="App">
       <h1>アナグラムつくるくん</h1>
