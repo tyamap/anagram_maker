@@ -1,5 +1,7 @@
+import WordClass from "./wordClass"
+
 type Options = {
-  targets: string[]
+  targets: WordClass[]
   vOnlyBase: 0 | 1
   ajOnlyBase: 0 | 1
   avOnlyBase: 0 | 1

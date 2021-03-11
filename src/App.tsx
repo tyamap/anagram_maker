@@ -9,7 +9,7 @@ export type Query = {
   word: string
   number: number
 }
-const defaultOptions: Options = { targets: [], vOnlyBase: 1, ajOnlyBase: 1, avOnlyBase: 1 }
+const defaultOptions: Options = { targets: ['n', 'v', 'aj', 'av'], vOnlyBase: 1, ajOnlyBase: 1, avOnlyBase: 1 }
 
 function App() {
   const [query, setQuery] = useState<Query>({ word: "", number: 0 })
