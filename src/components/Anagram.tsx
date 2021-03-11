@@ -1,21 +1,24 @@
 import React from "react";
 import useAxios from "axios-hooks";
 import KuromojiToken from "../entities/token";
+import Options from "../entities/options";
 
 type AnagramProps = {
   word: string;
   number: number;
+  options: Options
 };
 
 const api = {
   getWord: {
-    url: (w: string, mn: number) =>
-      `${process.env.REACT_APP_API_BASE}/word?w=${w}&mn=${mn}`,
+    url: (w: string, mn: number, t:string, vob: number, ajob: number, avob: number) =>
+      `${process.env.REACT_APP_API_BASE}/word?w=${w}&mn=${mn}&t=${t}&vob=${vob}&ajob=${ajob}&avob=${avob}`,
   },
 };
 const Anagram: React.FC<AnagramProps> = (props) => {
+  const opt = props.options
   const [{ data, loading, error }] = useAxios<KuromojiToken[]>({
-    url: api.getWord.url(props.word, props.number),
+    url: api.getWord.url(props.word, props.number, opt.targets?.join('+'), opt.vOnlyBase, opt.ajOnlyBase, opt.avOnlyBase),
     method: "GET",
   });
 
