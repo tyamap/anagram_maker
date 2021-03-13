@@ -1,13 +1,14 @@
 import React from "react";
-import useAxios from "axios-hooks";
 import KuromojiToken from "../entities/token";
-import Options from "../entities/options";
 
-type AnagramProps = {
+type ResultTableProps = {
   data: KuromojiToken[]
 };
 
-const Anagram: React.FC<AnagramProps> = (props) => {
+const ResultTable: React.FC<ResultTableProps> = (props) => {
+
+  if (props.data?.length === 0) return <p>該当なし</p>
+
   return (
     <table>
       <thead>
@@ -40,4 +41,4 @@ const Anagram: React.FC<AnagramProps> = (props) => {
   );
 };
 
-export default Anagram;
+export default ResultTable;
