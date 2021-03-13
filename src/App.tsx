@@ -1,5 +1,5 @@
 import useAxios from "axios-hooks";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import ResultTable from "./components/ResultTable";
 import InputForm from "./components/InputForm";
@@ -38,10 +38,10 @@ function App() {
       <form onSubmit={onSubmit}>
         <InputForm form={form} />
         <OptionsForm form={form} />
-        <input type="submit" />
+        <input type="submit" disabled={loading}/>
       </form>
       {loading && <CircularProgress />}
-      {data != undefined && !error && <ResultTable data={data} />}
+      {data !== undefined && !error && <ResultTable data={data} />}
       {error && <p>ERROR!!</p>}
     </div>
   );

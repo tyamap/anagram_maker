@@ -1,6 +1,4 @@
 import React from "react";
-import { UseFormMethods } from "react-hook-form";
-import Options from "../entities/options";
 
 type OptionsFormProps = {
   form: any;
