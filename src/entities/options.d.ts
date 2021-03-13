@@ -1,12 +1,10 @@
 import WordClass from "./wordClass"
 
 type Options = {
-  targets: WordClass[]
-  vOnlyBase: 0 | 1
-  ajOnlyBase: 0 | 1
-  avOnlyBase: 0 | 1
+  t: WordClass[]
+  vob: 0 | 1
+  ajob: 0 | 1
+  avob: 0 | 1
 }
 
 export default Options
-
-// export const defaultOptions: Options = { targets: [], vOnlyBase: 0, ajOnlyBase: 0, avOnlyBase: 0 }

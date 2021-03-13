@@ -4,27 +4,10 @@ import KuromojiToken from "../entities/token";
 import Options from "../entities/options";
 
 type AnagramProps = {
-  word: string;
-  number: number;
-  options: Options
+  data: KuromojiToken[]
 };
 
-const api = {
-  getWord: {
-    url: (w: string, mn: number, t:string, vob: number, ajob: number, avob: number) =>
-      `${process.env.REACT_APP_API_BASE}/word?w=${w}&mn=${mn}&t=${t}&vob=${vob}&ajob=${ajob}&avob=${avob}`,
-  },
-};
 const Anagram: React.FC<AnagramProps> = (props) => {
-  const opt = props.options
-  const [{ data, loading, error }] = useAxios<KuromojiToken[]>({
-    url: api.getWord.url(props.word, props.number, opt.targets?.join('+'), opt.vOnlyBase, opt.ajOnlyBase, opt.avOnlyBase),
-    method: "GET",
-  });
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error!</p>;
-
   return (
     <table>
       <thead>
@@ -40,7 +23,7 @@ const Anagram: React.FC<AnagramProps> = (props) => {
         </tr>
       </thead>
       <tbody>
-        {data?.map((d, i) => (
+        {props.data.map((d, i) => (
           <tr key={i}>
             <td className="result">{d.surface}</td>
             <td>{d.partOfSpeechLevel1}</td>

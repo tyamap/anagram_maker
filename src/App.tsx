@@ -1,26 +1,47 @@
+import useAxios from "axios-hooks";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import Anagram from "./components/Anagram";
 import InputForm from "./components/InputForm";
 import OptionsForm from "./components/OptionsForm";
 import Options from "./entities/options";
+import KuromojiToken from "./entities/token";
 
+type FormData = {
+  w: string;
+  mn: number;
+} & Options;
 
-export type Query = {
-  word: string
-  number: number
-}
-const defaultOptions: Options = { targets: ['n', 'v', 'aj', 'av'], vOnlyBase: 1, ajOnlyBase: 1, avOnlyBase: 1 }
+const api = {
+  getWord: {
+    url: () => `${process.env.REACT_APP_API_BASE}/word`,
+  },
+};
 
 function App() {
-  const [query, setQuery] = useState<Query>({ word: "", number: 0 })
-  const [options, setOptions] = useState<Options>(defaultOptions)
+  const form = useForm<FormData>();
+  const onSubmit = form.handleSubmit((data: FormData) => {
+    updateData({ data: data }).then((data) => {
+      console.log(data);
+    });
+  });
+  const [{ data, loading, error }, updateData] = useAxios<KuromojiToken[]>(
+    {
+      url: api.getWord.url(),
+      method: "POST",
+    },
+    { manual: true }
+  );
 
   return (
     <div className="App">
       <h1>アナグラムつくるくん</h1>
-      <InputForm setQuery={setQuery} />
-      <OptionsForm setOptions={setOptions}/>
-      <Anagram word={query.word} number={query.number} options={options} />
+      <form onSubmit={onSubmit}>
+        <InputForm form={form} />
+        <OptionsForm form={form} />
+        <input type="submit" />
+      </form>
+      <Anagram data={data || []} />
     </div>
   );
 }
