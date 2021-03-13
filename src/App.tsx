@@ -34,11 +34,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>アナグラムつくるくん</h1>
+      <h1>あなぐらむつくるくん</h1>
       <form onSubmit={onSubmit}>
         <InputForm form={form} />
         <OptionsForm form={form} />
-        <input type="submit" disabled={loading}/>
+        <input type="submit" value="つくる" disabled={loading}/>
       </form>
       {loading && <CircularProgress />}
       {data !== undefined && !error && <ResultTable data={data} />}
