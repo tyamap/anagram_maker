@@ -6,7 +6,7 @@ import InputForm from "./components/InputForm";
 import OptionsForm from "./components/OptionsForm";
 import Options from "./entities/options";
 import KuromojiToken from "./entities/token";
-import "./App.css"
+import "./App.css";
 
 type FormData = {
   w: string;
@@ -22,8 +22,10 @@ const api = {
 function App() {
   const form = useForm<FormData>();
   const onSubmit = form.handleSubmit((data: FormData) => {
-    updateData({ data: data });
+    console.log(data);
+    // updateData({ data: data });
   });
+
   const [{ data, loading, error }, updateData] = useAxios<KuromojiToken[]>(
     {
       url: api.getWord.url(),
@@ -34,11 +36,18 @@ function App() {
 
   return (
     <div className="App">
-      <h1>あなぐらむつくるくん</h1>
+      <h1 style={{ textAlign: "center" }}>あなぐらむつくるくん</h1>
       <form onSubmit={onSubmit}>
         <InputForm form={form} />
         <OptionsForm form={form} />
-        <input type="submit" value="つくる" disabled={loading}/>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <input
+            className="submit-btn"
+            type="submit"
+            value="つくる"
+            disabled={loading}
+          />
+        </div>
       </form>
       {loading && <p>LOADING...</p>}
       {data !== undefined && !error && <ResultTable data={data} />}
