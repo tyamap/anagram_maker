@@ -35,9 +35,9 @@ const InputForm: React.FC<InputFormProps> = (props) => {
       <div
         style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}
       >
-        <button className="count-btn" onClick={handleMinus}>
+        <div className="count-btn" onClick={handleMinus}>
           -
-        </button>
+        </div>
         <input
           className="count-input"
           type="number"
@@ -49,9 +49,9 @@ const InputForm: React.FC<InputFormProps> = (props) => {
           disabled
           step={1}
         />
-        <button className="count-btn" onClick={handlePlus}>
+        <div className="count-btn" onClick={handlePlus}>
           +
-        </button>
+        </div>
       </div>
     </div>
   );
