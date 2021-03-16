@@ -20,58 +20,60 @@ const radios = [
 const OptionsForm: React.FC<OptionsFormProps> = (props) => {
   return (
     <table>
-      <tr>
-        <td>対象：</td>
-        <td>
-          <div>
-            {checkboxes.map((d) => (
-              <>
-                <input
-                  id={d.key}
-                  type="checkbox"
-                  name="t"
-                  ref={props.form.register}
-                  value={d.key}
-                  defaultChecked
-                />
-                <label htmlFor={d.key} className="checkbox">
-                  {d.label}
-                </label>
-              </>
-            ))}
-          </div>
-        </td>
-      </tr>
-      {radios.map((d) => (
+      <tbody>
         <tr>
+          <td>対象：</td>
           <td>
-            <span>{d.label}：</span>
-          </td>
-          <td>
-            <input
-              id={`${d.key}-1`}
-              type="radio"
-              name={d.key}
-              ref={props.form.register}
-              value={1}
-              defaultChecked
-            />
-            <label htmlFor={`${d.key}-1`} className="radio">
-              基本形のみ
-            </label>
-            <input
-              id={`${d.key}-0`}
-              type="radio"
-              name={d.key}
-              ref={props.form.register}
-              value={0}
-            />
-            <label htmlFor={`${d.key}-0`} className="radio">
-              活用形も含む
-            </label>
+            <div>
+              {checkboxes.map((d) => (
+                <React.Fragment key={d.key}>
+                  <input
+                    id={d.key}
+                    type="checkbox"
+                    name="t"
+                    ref={props.form.register}
+                    value={d.key}
+                    defaultChecked
+                  />
+                  <label htmlFor={d.key} className="checkbox">
+                    {d.label}
+                  </label>
+                </React.Fragment>
+              ))}
+            </div>
           </td>
         </tr>
-      ))}
+        {radios.map((d) => (
+          <tr key={d.key}>
+            <td>
+              <span>{d.label}：</span>
+            </td>
+            <td>
+              <input
+                id={`${d.key}-1`}
+                type="radio"
+                name={d.key}
+                ref={props.form.register}
+                value={1}
+                defaultChecked
+              />
+              <label htmlFor={`${d.key}-1`} className="radio">
+                基本形のみ
+              </label>
+              <input
+                id={`${d.key}-0`}
+                type="radio"
+                name={d.key}
+                ref={props.form.register}
+                value={0}
+              />
+              <label htmlFor={`${d.key}-0`} className="radio">
+                活用形も含む
+              </label>
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };
