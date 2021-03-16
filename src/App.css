@@ -1,0 +1,95 @@
+/* チェックボックス03 */
+input[type=checkbox] {
+  display: none;
+}
+.checkbox {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 30px;
+  position: relative;
+  width: auto;
+}
+.checkbox::before {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 16px;
+  left: 5px;
+  margin-top: -8px;
+  position: absolute;
+  top: 50%;
+  width: 16px;
+}
+.checkbox::after {
+  border-right: 6px solid #fedd1e;
+  border-bottom: 3px solid #fedd1e;
+  content: '';
+  display: block;
+  height: 20px;
+  left: 7px;
+  margin-top: -16px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: rotate(45deg) translate3d(0,2px,0) scale3d(.7,.7,1);
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  width: 9px;
+}
+input[type=checkbox]:checked + .checkbox::before {
+  border-color: #666;
+}
+input[type=checkbox]:checked + .checkbox::after {
+  opacity: 1;
+  transform: rotate(45deg) scale3d(1,1,1);
+}
+
+/* ラジオボタン03 */
+input[type=radio] {
+  display: none;
+}
+.radio {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 30px;
+  position: relative;
+  width: auto;
+}
+.radio::before {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 16px;
+  left: 5px;
+  margin-top: -8px;
+  position: absolute;
+  top: 50%;
+  width: 16px;
+}
+.radio::after {
+  background: #fedd1e;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 10px;
+  left: 9px;
+  margin-top: -4px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: scale3d(.3,.3,1);
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  width: 10px;
+}
+input[type=radio]:checked + .radio::before {
+  border-color: #666;
+}
+input[type=radio]:checked + .radio::after {
+  opacity: 1;
+  transform: scale3d(1,1,1);
+}
