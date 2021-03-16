@@ -22,8 +22,7 @@ const api = {
 function App() {
   const form = useForm<FormData>();
   const onSubmit = form.handleSubmit((data: FormData) => {
-    console.log(data);
-    // updateData({ data: data });
+    updateData({ data: data });
   });
 
   const [{ data, loading, error }, updateData] = useAxios<KuromojiToken[]>(
