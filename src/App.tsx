@@ -6,7 +6,7 @@ import InputForm from "./components/InputForm";
 import OptionsForm from "./components/OptionsForm";
 import Options from "./entities/options";
 import KuromojiToken from "./entities/token";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import "./App.css"
 
 type FormData = {
   w: string;
@@ -40,7 +40,7 @@ function App() {
         <OptionsForm form={form} />
         <input type="submit" value="つくる" disabled={loading}/>
       </form>
-      {loading && <CircularProgress />}
+      {loading && <p>LOADING...</p>}
       {data !== undefined && !error && <ResultTable data={data} />}
       {error && <p>ERROR!!</p>}
     </div>
