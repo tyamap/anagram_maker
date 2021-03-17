@@ -2,12 +2,11 @@ import React from "react";
 import KuromojiToken from "../entities/token";
 
 type ResultTableProps = {
-  data: KuromojiToken[]
+  data: KuromojiToken[];
 };
 
 const ResultTable: React.FC<ResultTableProps> = (props) => {
-
-  if (props.data?.length === 0) return <p>該当なし</p>
+  if (props.data?.length === 0) return <p className="error">該当なし</p>;
 
   return (
     <table>

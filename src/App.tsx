@@ -6,6 +6,7 @@ import InputForm from "./components/InputForm";
 import OptionsForm from "./components/OptionsForm";
 import Options from "./entities/options";
 import KuromojiToken from "./entities/token";
+import ReactLoading from "react-loading";
 import "./App.css";
 
 type FormData = {
@@ -48,9 +49,15 @@ function App() {
           />
         </div>
       </form>
-      {!loading && !error && data !== undefined && !error && <ResultTable data={data} />}
-      {loading && <p>LOADING...</p>}
-      {error && <p>ERROR!!</p>}
+      {!loading && !error && data !== undefined && !error && (
+        <ResultTable data={data} />
+      )}
+      {loading && (
+        <div style={{ margin: "0 auto", width: 100 }}>
+          <ReactLoading type="bubbles" color="#008080" width={100} />
+        </div>
+      )}
+      {error && <p className="error">ERROR!!</p>}
     </div>
   );
 }
