@@ -46,7 +46,7 @@ const InputForm: React.FC<InputFormProps> = (props) => {
           ref={props.form.register}
           min={countMin}
           max={countMax}
-          disabled
+          readOnly
           step={1}
         />
         <div className="count-btn" onClick={handlePlus}>
