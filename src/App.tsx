@@ -48,8 +48,8 @@ function App() {
           />
         </div>
       </form>
+      {!loading && !error && data !== undefined && !error && <ResultTable data={data} />}
       {loading && <p>LOADING...</p>}
-      {data !== undefined && !error && <ResultTable data={data} />}
       {error && <p>ERROR!!</p>}
     </div>
   );
