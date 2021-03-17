@@ -170,3 +170,8 @@ input[type=radio]:checked + .radio::after {
  -2px  0px 0 #008080,
   0px -2px 0 #008080; 
 }
+.valid {
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}

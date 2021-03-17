@@ -23,7 +23,14 @@ const api = {
 function App() {
   const form = useForm<FormData>();
   const onSubmit = form.handleSubmit((data: FormData) => {
-    updateData({ data: data });
+    if (form.getValues().w.length < form.getValues().mn) {
+      form.setError("mn", {
+        type: "manual",
+        message: `${form.getValues().w.length}以下にしてください`,
+      });
+    } else {
+      updateData({ data: data });
+    }
   });
 
   const [{ data, loading, error }, updateData] = useAxios<KuromojiToken[]>(
@@ -39,6 +46,7 @@ function App() {
       <h1 style={{ textAlign: "center" }}>あなぐらむつくるくん</h1>
       <form onSubmit={onSubmit}>
         <InputForm form={form} />
+        {form.errors.mn && <p className="valid">{form.errors.mn.message}</p>}
         <OptionsForm form={form} />
         <div style={{ display: "flex", justifyContent: "center" }}>
           <input
@@ -57,7 +65,7 @@ function App() {
           <ReactLoading type="bubbles" color="#008080" width={100} />
         </div>
       )}
-      {error && <p className="error">ERROR!!</p>}
+      {error && <p className="error big">ERROR!!</p>}
     </div>
   );
 }
