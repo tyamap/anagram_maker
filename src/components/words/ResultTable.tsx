@@ -1,5 +1,5 @@
 import React from "react";
-import KuromojiToken from "../entities/token";
+import KuromojiToken from "../../entities/token";
 
 type ResultTableProps = {
   data: KuromojiToken[];
