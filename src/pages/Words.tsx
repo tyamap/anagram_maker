@@ -13,8 +13,8 @@ type FormData = {
 } & Options;
 
 const api = {
-  getWord: {
-    url: () => `${process.env.REACT_APP_API_BASE}/word`,
+  getWords: {
+    url: () => `${process.env.REACT_APP_API_BASE}/words`,
   },
 };
 
@@ -35,7 +35,7 @@ const Words: React.FC<WordsProps> = (props) => {
 
   const [{ data, loading, error }, updateData] = useAxios<KuromojiToken[]>(
     {
-      url: api.getWord.url(),
+      url: api.getWords.url(),
       method: "POST",
     },
     { manual: true }

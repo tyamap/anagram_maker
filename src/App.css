@@ -73,8 +73,8 @@ input[type=checkbox] {
   width: 16px;
 }
 .checkbox::after {
-  border-right: 6px solid #008080;
-  border-bottom: 3px solid #008080;
+  border-right: 6px solid #ff7f50;
+  border-bottom: 3px solid #ff7f50;
   content: '';
   display: block;
   height: 20px;
@@ -121,7 +121,7 @@ input[type=radio] {
   width: 16px;
 }
 .radio::after {
-  background: #008080;
+  background: #ff7f50;
   border-radius: 50%;
   content: '';
   display: block;
@@ -174,4 +174,19 @@ input[type=radio]:checked + .radio::after {
   text-align: center;
   font-weight: bold;
   margin: 0;
+}
+
+.sen-words {
+  margin-left: 10px;
+  font-size: 24px;
+}
+.sen-table {
+  table-layout: fixed;
+  width: 100%;
+}
+thead, tbody, tr {
+  width: 100%;
+}
+.sen-table .col-1 {
+  width: 90%;
 }
