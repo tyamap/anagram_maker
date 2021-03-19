@@ -173,7 +173,9 @@ input[type=radio]:checked + .radio::after {
 .valid {
   text-align: center;
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 12px;
+  margin-top: -12px;
+  color: #ff7f50;
 }
 
 table {
