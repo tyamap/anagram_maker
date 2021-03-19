@@ -10,7 +10,7 @@ const InputForm: React.FC<InputFormProps> = (props) => {
         <label className="ef">
           <input
             type="text"
-            placeholder="もととなる文字列"
+            placeholder="入力"
             name="s"
             ref={props.form.register}
             required

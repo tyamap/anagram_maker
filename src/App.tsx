@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Redirect,
+  Route,
+} from "react-router-dom";
 import "./App.css";
 import Sentences from "./pages/Sentences";
 import Words from "./pages/Words";
@@ -9,11 +14,18 @@ function App() {
     <div className="App">
       <Router>
         <h1 style={{ textAlign: "center" }}>あなぐらむつくるくん</h1>
-        <p style={{ textAlign: "center" }}>
-          <Link to="/">単語をつくる</Link>　
-          <Link to="/sentences">文章をつくる</Link>
-        </p>
-        <Route exact path="/" component={Words} />
+        <nav style={{ textAlign: "center" }}>
+          <NavLink to="/words">
+            <span>単語</span>をつくる
+          </NavLink>
+          <NavLink to="/sentences">
+            <span>文章</span>をつくる
+          </NavLink>
+        </nav>
+        <Route exact path="/">
+          {<Redirect to="/words" />}
+        </Route>
+        <Route exact path="/words" component={Words} />
         <Route exact path="/sentences" component={Sentences} />
       </Router>
     </div>

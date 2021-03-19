@@ -23,7 +23,7 @@ const InputForm: React.FC<InputFormProps> = (props) => {
         <label className="ef">
           <input
             type="text"
-            placeholder="もととなる文字列"
+            placeholder="入力"
             name="w"
             ref={props.form.register}
             required
@@ -31,7 +31,7 @@ const InputForm: React.FC<InputFormProps> = (props) => {
           />
         </label>
       </div>
-      <div style={{ textAlign: "center" }}>つくる文字数</div>
+      <div style={{ textAlign: "center" }}>単語の文字数</div>
       <div
         style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}
       >

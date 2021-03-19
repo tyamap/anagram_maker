@@ -46,13 +46,13 @@ const Words: React.FC<WordsProps> = (props) => {
       <p className="descript">
         <span>入力された文字列を 指定の文字数で並び替えて</span>
         <br />
-        <span>意味のありそうな単語をつくります</span>
+        <span>意味のある単語を抽出します</span>
         <br />
       </p>
       <p className="descript">
         入力: 15文字まで
         <br/>
-        つくる文字数: 2 ~ 7
+        単語の文字数: 2 ~ 7
         <br />
       </p>
       <form onSubmit={onSubmit}>

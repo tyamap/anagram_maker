@@ -38,7 +38,7 @@ const Sentences: React.FC<SentencesProps> = (props) => {
       <p className="descript">
         <span>入力された文字列を並び替えて</span>
         <br />
-        <span>意味の通りそうな単語の羅列をつくります</span>
+        <span>意味のありそうな 単語の羅列をつくります</span>
         <br />
       </p>
       <p className="descript">

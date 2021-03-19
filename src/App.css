@@ -208,3 +208,48 @@ thead, tbody, tr {
 .descript span {
   border-bottom: dashed 2px #ff7f50;
 }
+
+/* ナビゲーションリンク */
+nav a {
+  color: #008080;
+  position: relative;
+  margin: 10px;
+}
+nav a.active {
+  text-decoration: none;
+}
+  
+nav a.active span {
+  font-size: 24px;
+}
+
+nav a.active::after {
+  border-right: 6px solid #ff7f50;
+  border-bottom: 3px solid #ff7f50;
+  content: '';
+  display: block;
+  height: 32px;
+  left: 52px;
+  margin-top: -24px;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  transform: rotate(45deg) translate3d(0,2px,0) scale3d(.7,.7,1);
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  width: 9px;
+}
+nav a.active::after {
+  border-right: 6px solid #ff7f50;
+  border-bottom: 3px solid #ff7f50;
+  content: '';
+  display: block;
+  height: 32px;
+  left: 52px;
+  margin-top: -24px;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  transform: rotate(45deg) translate3d(0,2px,0) scale3d(.7,.7,1);
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  width: 9px;
+}
