@@ -54,6 +54,7 @@ const Words: React.FC<WordsProps> = (props) => {
         <br/>
         単語の文字数: 2 ~ 7
         <br />
+        推奨: 全文字ひらがな
       </p>
       <form onSubmit={onSubmit}>
         <InputForm form={form} />

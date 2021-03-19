@@ -45,6 +45,8 @@ const Sentences: React.FC<SentencesProps> = (props) => {
         入力: 10文字まで
         <br />
         結果: 300件まで
+        <br />
+        推奨: 全文字ひらがな
       </p>
       <form onSubmit={onSubmit}>
         <InputForm form={form} />
