@@ -35,6 +35,17 @@ const Sentences: React.FC<SentencesProps> = (props) => {
 
   return (
     <div>
+      <p className="descript">
+        <span>入力された文字列を並び替えて</span>
+        <br />
+        <span>意味の通りそうな単語の羅列をつくります</span>
+        <br />
+      </p>
+      <p className="descript">
+        入力: 10文字まで
+        <br />
+        結果: 300件まで
+      </p>
       <form onSubmit={onSubmit}>
         <InputForm form={form} />
         <div style={{ display: "flex", justifyContent: "center" }}>

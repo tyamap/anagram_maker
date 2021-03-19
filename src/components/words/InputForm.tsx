@@ -5,7 +5,7 @@ type InputFormProps = {
 };
 
 const countMin = 2;
-const countMax = 10;
+const countMax = 7;
 const InputForm: React.FC<InputFormProps> = (props) => {
   const [count, setCount] = useState(3);
 

@@ -5,7 +5,7 @@ body {
 .cp_iptxt {
 	position: relative;
 	width: 80%;
-	margin: 40px auto;
+	margin: 40px auto 20px;
 }
 .cp_iptxt input[type='text'] {
 	font: 20px/30px sans-serif;
@@ -201,4 +201,10 @@ thead, tbody, tr {
 }
 .sen-table .col-1 {
   width: 90%;
+}
+.descript {
+  text-align: center;
+}
+.descript span {
+  border-bottom: dashed 2px #ff7f50;
 }
