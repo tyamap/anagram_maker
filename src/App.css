@@ -255,3 +255,12 @@ nav a.active::after {
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   width: 9px;
 }
+
+footer {
+  text-align: center;
+}
+
+footer a {
+  color: #008080;
+  text-decoration: none;
+}

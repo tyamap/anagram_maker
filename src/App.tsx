@@ -6,6 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/Footer";
 import Sentences from "./pages/Sentences";
 import Words from "./pages/Words";
 
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/words" component={Words} />
         <Route exact path="/sentences" component={Sentences} />
       </Router>
+      <Footer />
     </div>
   );
 }
