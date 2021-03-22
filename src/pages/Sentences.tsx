@@ -2,7 +2,6 @@ import useAxios from "axios-hooks";
 import React from "react";
 import { useForm } from "react-hook-form";
 import InputForm from "../components/sentences/InputForm";
-import KuromojiToken from "../entities/token";
 import ReactLoading from "react-loading";
 import ResultTable from "../components/sentences/ResultTable";
 import SentenceResponse from "../entities/sentenseResponse";
