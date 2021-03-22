@@ -1,8 +1,8 @@
 import React from "react";
-import KuromojiToken from "../../entities/token";
+import SentenceResponse from "../../entities/sentenseResponse";
 
 type ResultTableProps = {
-  data: KuromojiToken[][];
+  data: SentenceResponse[][];
 };
 
 const ResultTable: React.FC<ResultTableProps> = (props) => {

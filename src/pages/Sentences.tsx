@@ -5,6 +5,7 @@ import InputForm from "../components/sentences/InputForm";
 import KuromojiToken from "../entities/token";
 import ReactLoading from "react-loading";
 import ResultTable from "../components/sentences/ResultTable";
+import SentenceResponse from "../entities/sentenseResponse";
 
 type FormData = {
   s: string;
@@ -25,7 +26,7 @@ const Sentences: React.FC<SentencesProps> = (props) => {
     updateData({ data: data });
   });
 
-  const [{ data, loading, error }, updateData] = useAxios<KuromojiToken[][]>(
+  const [{ data, loading, error }, updateData] = useAxios<SentenceResponse[][]>(
     {
       url: api.getSentences.url(),
       method: "POST",
