@@ -258,6 +258,7 @@ nav a.active::after {
 
 footer {
   text-align: center;
+  margin: 20px 0;
 }
 
 footer a {
