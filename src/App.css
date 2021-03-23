@@ -264,3 +264,6 @@ footer a {
   color: #008080;
   text-decoration: none;
 }
+.result tbody {
+  text-align: center;
+}

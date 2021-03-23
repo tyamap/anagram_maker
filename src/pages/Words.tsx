@@ -70,7 +70,7 @@ const Words: React.FC<WordsProps> = (props) => {
         </div>
       </form>
       {!loading && !error && data !== undefined && !error && (
-        <ResultTable data={data} />
+        <ResultTable input={form.getValues('w')} data={data} />
       )}
       {loading && (
         <div style={{ margin: "0 auto", width: 100 }}>
