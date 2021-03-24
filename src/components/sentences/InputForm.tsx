@@ -18,6 +18,29 @@ const InputForm: React.FC<InputFormProps> = (props) => {
           />
         </label>
       </div>
+      <div style={{ textAlign: "center", paddingTop: 10 }}>
+        次の単語を含む(任意)
+      </div>
+      <div className="includes">
+        <input
+          type="text"
+          name="inc[0]"
+          ref={props.form.register}
+          placeholder="任意"
+        />
+        <input
+          type="text"
+          name="inc[1]"
+          ref={props.form.register}
+          placeholder="任意"
+        />
+        <input
+          type="text"
+          name="inc[2]"
+          ref={props.form.register}
+          placeholder="任意"
+        />
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import SentenceResponse from "../entities/sentenseResponse";
 
 type FormData = {
   s: string;
+  inc: string[];
 };
 
 const api = {
@@ -60,7 +61,7 @@ const Sentences: React.FC<SentencesProps> = (props) => {
         </div>
       </form>
       {!loading && !error && data !== undefined && !error && (
-        <ResultTable input={form.getValues('s')} data={data} />
+        <ResultTable input={form.getValues("s")} data={data} />
       )}
       {loading && (
         <div style={{ margin: "0 auto", width: 100 }}>
